@@ -18,6 +18,7 @@
     ],
     'xml': [
         'product.xml',
+        'party.xml',
     ],
     'translation': [
     ],

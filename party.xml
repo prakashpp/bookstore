@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- Author view -->
+        <record model="ir.ui.view" id="author_view_tree">
+            <field name="model">party.author</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Authors">
+                    <field name="name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="author_view_form">
+            <field name="model">party.author</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form"
+                        position="replace_attributes">
+                        <form string="Author"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
+                        position="before">
+                        <page string="Books" id="books">
+                            <field name="books" colspan="4"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_author_form">
+            <field name="name">Authors</field>
+            <field name="res_model">party.author</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_author_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="author_view_tree"/>
+            <field name="act_window" ref="act_author_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_author_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="author_view_form"/>
+            <field name="act_window" ref="act_author_form"/>
+        </record>
+        <menuitem parent="party.menu_party_form" sequence="30"
+            action="act_author_form" id="menu_author_form"/>
+
+        <!-- Publisher view -->
+        <record model="ir.ui.view" id="publisher_view_tree">
+            <field name="model">party.publisher</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Publisher">
+                    <field name="name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="publisher_view_form">
+            <field name="model">party.publisher</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form"
+                        position="replace_attributes">
+                        <form string="Publisher"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
+                        position="before">
+                        <page string="Books" id="books">
+                            <field name="books" colspan="4"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_publisher_form">
+            <field name="name">Publishers</field>
+            <field name="res_model">party.publisher</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_publisher_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="publisher_view_tree"/>
+            <field name="act_window" ref="act_publisher_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_publisher_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="publisher_view_form"/>
+            <field name="act_window" ref="act_publisher_form"/>
+        </record>
+        <menuitem parent="party.menu_party_form" sequence="30"
+            action="act_publisher_form" id="menu_publisher_form"/>
+
+    </data>
+</tryton>
