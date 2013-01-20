@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <menuitem name="BookStore" sequence="3" id="menu_bookstore"/>
+
+        <!-- Book view-->
+        <record model="ir.ui.view" id="book_tree_view">
+            <field name="model">bookstore.book</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Books">
+                    <field name="title"/>
+                    <field name="author"/>
+                    <field name="publisher"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="book_form_view">
+            <field name="model">bookstore.book</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Book">
+                    <label name="title"/>
+                    <field name="title"/>
+                    <label name="author"/>
+                    <field name="author"/>
+                    <label name="isbn10"/>
+                    <field name="isbn10"/>
+                    <label name="isbn13"/>
+                    <field name="isbn13"/>
+                    <label name="publisher"/>
+                    <field name="publisher"/>
+                    <label name="publishing_year"/>
+                    <field name="publishing_year"/>
+                    <label name="language"/>
+                    <field name="language"/>
+                    <label name="number_of_pages"/>
+                    <field name="number_of_pages"/>
+                    <notebook>
+                        <page string="Products" id="products">
+                            <field name="products" colspan="4"/>
+                        </page>
+                        <page string="Description" id="description">
+                            <separator name="description" colspan="4"/>
+                            <field name="description" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_book_form">
+            <field name="name">Books</field>
+            <field name="res_model">bookstore.book</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_book_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="book_tree_view"/>
+            <field name="act_window" ref="act_book_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_book_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="book_form_view"/>
+            <field name="act_window" ref="act_book_form"/>
+        </record>
+        <menuitem parent="menu_bookstore" sequence="30"
+            action="act_book_form" id="menu_book_form"/>
+
+    </data>
+</tryton>

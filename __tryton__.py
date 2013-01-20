@@ -19,6 +19,7 @@
     'xml': [
         'product.xml',
         'party.xml',
+        'bookstore.xml',
     ],
     'translation': [
     ],

@@ -9,7 +9,7 @@ class Author(ModelSQL, ModelView):
     party = fields.Many2One(
         'party.party', 'Party', required=True, ondelete='CASCADE',
     )
-    books = fields.One2Many('product.book', 'author', 'Books')
+    books = fields.One2Many('bookstore.book', 'author', 'Books')
 
 Author()
 
@@ -23,6 +23,6 @@ class Publisher(ModelSQL, ModelView):
     party = fields.Many2One(
         'party.party', 'Party', required=True, ondelete='CASCADE',
     )
-    books = fields.One2Many('product.book', 'publisher', 'Books')
+    books = fields.One2Many('bookstore.book', 'publisher', 'Books')
 
 Publisher()
